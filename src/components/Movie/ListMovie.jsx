@@ -31,6 +31,9 @@ export default function ListMovie() {
     const [totalPages, setTotalPages] = useState(1);
     const [loading, setLoading] = useState(false);
 
+    console.log(movies);
+    
+
     const fetchMovies = async () => {
         setLoading(true);
         try {
@@ -162,7 +165,6 @@ export default function ListMovie() {
 
                             <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <a href={`/movies/${movie.slug}`} className="bg-pink-500 text-white px-4 py-2 text-sm rounded-full hover:bg-pink-600 transition">🎬 Xem</a>
-                                <a href={`/trailer/${movie.slug}`} className="bg-white text-pink-600 px-4 py-2 text-sm rounded-full hover:bg-gray-100 transition">📺 Trailer</a>
                             </div>
                         </div>
                     ))}
