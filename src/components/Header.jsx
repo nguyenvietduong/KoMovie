@@ -21,7 +21,7 @@ export default function Nav() {
         <>
             {/* Dòng chữ nhỏ trên header */}
             <div className="absolute top-0 left-0 w-full bg-gray-100 text-gray-600 text-xs text-center py-1 select-none">
-                Phạm Thị Thu Huyền - Nguyễn Viết Dương <span className="heart-beat">❤</span>
+                Phạm Thị Thu Huyền <span className="heart-beat">❤</span> Nguyễn Viết Dương
             </div>
             <header className="bg-white shadow">
                 <nav
