@@ -4,7 +4,7 @@ export default function WatchPlayer({ src, onClose }) {
     if (!src) return null;
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center">
+        <div className="fixed inset-0 bg-black bg-opacity-70 z-[9999] flex items-center justify-center">
             <div className="relative w-full max-w-5xl aspect-video bg-black rounded-lg shadow-lg border">
                 <button
                     onClick={onClose}

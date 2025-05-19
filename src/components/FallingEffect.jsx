@@ -38,7 +38,7 @@ export default function FallingEffect({ effect = "cherryBlossoms" }) {
           pointer-events: none;
           animation-timing-function: linear;
           animation-iteration-count: infinite;
-          z-index: 9999;
+          z-index: 20;
           will-change: transform, opacity;
           ${isLantern ? "bottom: -50px;" : "top: -50px;"}
           animation-name: ${isLantern ? "rise" : "fall"};
