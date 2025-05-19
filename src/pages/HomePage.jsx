@@ -3,7 +3,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import Slider from "../components/Slider";
 import MovieSection from "../components/Movie/MovieSection";
 import { useEffect, useState } from "react";
-import movieService from "../services/movieService";
+import movieService from '../services/MovieService';
 
 export default function HomePage() {
     const breadcrumbItems = [{ label: "Trang chủ", path: "/" }];
