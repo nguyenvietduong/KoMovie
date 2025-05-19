@@ -5,7 +5,7 @@
 @layer base {
     body {
         font-family: 'Inter', sans-serif;
-      }      
+    }
 }
 
 @layer utilities {
@@ -41,5 +41,31 @@
         50% {
             transform: translateY(0);
         }
+    }
+
+    @keyframes heartbeat {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        25% {
+            transform: scale(1.2);
+        }
+
+        50% {
+            transform: scale(1);
+        }
+
+        75% {
+            transform: scale(1.15);
+        }
+    }
+
+    .heart-beat {
+        display: inline-block;
+        animation: heartbeat 1s ease-in-out infinite;
+        color: red;
     }
 }
