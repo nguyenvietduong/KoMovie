@@ -41,6 +41,13 @@ const effectsConfig = {
     speedRange: [6, 12],
     opacityRange: [0.6, 0.95],
   },
+  summerSunflowers: {
+    symbol: "🌻",
+    colors: ["#FFD700", "#FFA500", "#FF8C00"],
+    sizeRange: [25, 40],
+    speedRange: [6, 12],
+    opacityRange: [0.7, 1],
+  },
 };
 
 export default effectsConfig;

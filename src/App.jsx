@@ -19,7 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function App() {
     return (
         <>
-            <FallingEffect effect="snowflakes" />
+            <FallingEffect effect="summerSunflowers" />
             <ToastContainer />
             <ScrollToTopButton />
             <LoadingScreen />
