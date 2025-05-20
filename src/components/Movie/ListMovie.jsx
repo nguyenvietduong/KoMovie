@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SearchMovieRepository from "../../repositories/SearchMovieRepository";
 import SearchMovieService from "../../services/SearchMovieService";
 import { useFavorites } from "../../hooks/useFavorites";
+import { Link } from "react-router-dom";
 
 const searchMovieService = new SearchMovieService(SearchMovieRepository);
 
@@ -158,7 +159,7 @@ export default function ListMovie() {
                         const isFavorite = Array.isArray(favorites) && favorites.some(fav => fav._id === movie._id);
 
                         return (
-                            <div key={movie._id} className="relative group bg-white shadow rounded overflow-hidden">
+                            <Link to={`/movies/${movie.slug}`} key={movie._id} className="relative group bg-white shadow rounded overflow-hidden">
                                 <img
                                     src={"https://phimimg.com/" + movie.poster_url}
                                     alt={movie.name}
@@ -205,10 +206,8 @@ export default function ListMovie() {
                                     <p className="text-xs text-gray-500">{movie.country?.[0].name} • {movie.year}</p>
                                 </div>
 
-                                <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <a href={`/movies/${movie.slug}`} className="bg-green-500 text-white px-4 py-2 text-sm rounded-full hover:bg-green-600 transition">🎬 Xem</a>
-                                </div>
-                            </div>
+                                <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </Link>
                         );
                     })}
                 </div>
