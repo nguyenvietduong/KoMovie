@@ -124,7 +124,6 @@ export default function SearchBar() {
                 className="flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900"
                 onClick={() => {
                     if (searchTerm) {
-                        // Nếu modal đang mở thì đóng và reset dữ liệu
                         setSearchTerm(false);
                         setSearch("");
                         setResults([]);
@@ -141,7 +140,7 @@ export default function SearchBar() {
 
             {searchTerm && (
                 <div
-                    className="absolute right-0 mt-2 w-48 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 z-50"
+                    className="absolute left-40 mt-1 lg:right-0 lg:mt-2 w-48 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 z-50"
                     onClick={(e) => e.stopPropagation()}
                 >
                     <div className="absolute top-full -left-44 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">

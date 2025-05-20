@@ -6,8 +6,8 @@ export default function MovieFavorites() {
     const { favorites, toggleFavorite } = useFavorites();
 
     const breadcrumbItems = [
-        { label: "Trang chủ", path: "/" },
-        { label: "Phim yêu thích", path: "/favorites" },
+        { label: "Trang chủ", to: "/" },
+        { label: "Phim yêu thích", to: "/favorites" },
     ];
 
     const getFullThumbUrl = (url) => {

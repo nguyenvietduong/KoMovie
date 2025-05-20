@@ -101,9 +101,9 @@ export default function Nav() {
                                 {label}
                             </Link>
                         ))}
-                    </div>
 
-                    <SearchBar />
+                        <SearchBar />
+                    </div>
 
                     {/* Right side: Search, Language, User */}
                     {/* <div className="hidden lg:flex lg:items-center lg:gap-x-6">
@@ -180,6 +180,8 @@ export default function Nav() {
                                 {label}
                             </Link>
                         ))}
+
+                        <SearchBar />
 
                         {/* {user ? (
                             <div className="pt-2 border-t border-gray-200">
