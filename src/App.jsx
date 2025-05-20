@@ -19,22 +19,40 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
-    // useEffect(() => {
-    //     const handleKeyDown = (e) => {
-    //         if (
-    //             e.key === "F12" ||
-    //             (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase()))
-    //         ) {
-    //             e.preventDefault();
-    //         }
-    //     };
+    useEffect(() => {
+        const pressedKeys = new Set();
 
-    //     window.addEventListener("keydown", handleKeyDown);
+        const handleKeyDown = (e) => {
+            if (
+                e.key === "F12" ||
+                (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase()))
+            ) {
+                e.preventDefault();
+                alert("Không được đâu lêu lêu !!");
+                return;
+            }
 
-    //     return () => {
-    //         window.removeEventListener("keydown", handleKeyDown);
-    //     };
-    // }, []);
+            // Thêm phím đang nhấn vào Set
+            pressedKeys.add(e.key.toLowerCase());
+
+            // Kiểm tra nếu đang nhấn cả "h" và "d"
+            if (pressedKeys.has("h") && pressedKeys.has("d")) {
+                alert("Lêu lêu Phạm Thị Thu Huyền 👀❤");
+            }
+        };
+
+        const handleKeyUp = (e) => {
+            pressedKeys.delete(e.key.toLowerCase());
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        window.addEventListener("keyup", handleKeyUp);
+
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+            window.removeEventListener("keyup", handleKeyUp);
+        };
+    }, []);
 
     return (
         <>

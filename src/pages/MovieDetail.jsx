@@ -138,7 +138,7 @@ export default function MovieDetail() {
                                             <button
                                                 key={idx}
                                                 onClick={() => setSelectedSrc(ep.link_embed)}
-                                                className="relative overflow-hidden bg-white text-black px-4 py-2 min-w-[80px] rounded text-sm transition-colors duration-300 group"
+                                                className="relative overflow-hidden bg-white text-black px-4 py-2 min-w-[100px] rounded text-sm transition-colors duration-300 group"
                                             >
                                                 <span className="relative z-10 group-hover:text-white transition-colors duration-300">
                                                     {ep.name}
