@@ -11,9 +11,9 @@ import HomePage from "./pages/HomePage";
 import ListMoviePage from "./pages/ListMoviePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import FallingEffect from "./components/FallingEffect";
+import AIChatWidget from './components/AIChatWidget';
 import MovieDetail from "./pages/MovieDetail";
 import MovieFavorites from "./pages/MovieFavorites";
-import ScrollToTopButton from "./components/ScrollToTopButton";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -23,14 +23,14 @@ export default function App() {
         let alertedHD = false;
 
         const handleKeyDown = (e) => {
-            if (
-                e.key === "F12" ||
-                (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase()))
-            ) {
-                e.preventDefault();
-                alert("Không được đâu lêu lêu !!");
-                return;
-            }
+            // if (
+            //     e.key === "F12" ||
+            //     (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase()))
+            // ) {
+            //     e.preventDefault();
+            //     alert("Không được đâu lêu lêu !!");
+            //     return;
+            // }
 
             pressedKeys.add(e.key.toLowerCase());
 
@@ -59,9 +59,9 @@ export default function App() {
 
     return (
         <>
+            <AIChatWidget />
             <FallingEffect effect="snowflakes" />
             <ToastContainer />
-            <ScrollToTopButton />
             <LoadingScreen />
             <Header />
             <Routes>
