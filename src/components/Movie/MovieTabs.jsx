@@ -56,7 +56,7 @@ export default function MovieTabs() {
                         <button
                             key={tab.value}
                             onClick={() => setActiveTab(tab.value)}
-                            className={`relative overflow-hidden px-4 py-2 min-w-[80px] rounded border text-sm font-medium transition-all duration-300 group ${isActive
+                            className={`relative overflow-hidden px-4 py-2 w-[120px] rounded border text-sm font-medium transition-all duration-300 group ${isActive
                                 ? 'bg-green-600 text-white border-green-600'
                                 : 'border-green-600 text-green-600'
                                 }`}
