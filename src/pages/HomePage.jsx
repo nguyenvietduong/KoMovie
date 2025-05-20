@@ -25,8 +25,8 @@ export default function HomePage() {
             try {
                 const [dataSliders, dataNewMovies, dataHotMovies] = await Promise.all([
                     movieService.fetchNewMovies(randum()),
-                    movieService.fetchNewMovies(2),
-                    movieService.fetchNewMovies(3),
+                    movieService.fetchNewMovies(randum()),
+                    movieService.fetchNewMovies(randum()),
                 ]);
 
                 setDataSliderMovies(dataSliders.items || []);
