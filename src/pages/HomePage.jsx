@@ -14,13 +14,17 @@ export default function HomePage() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    function randum() {
+        return Math.floor(Math.random() * 10) + 1;
+    }
+
     useEffect(() => {
         async function fetchMovies() {
             setLoading(true);
             setError(null);
             try {
                 const [dataSliders, dataNewMovies, dataHotMovies] = await Promise.all([
-                    movieService.fetchNewMovies(1),
+                    movieService.fetchNewMovies(randum()),
                     movieService.fetchNewMovies(2),
                     movieService.fetchNewMovies(3),
                 ]);
