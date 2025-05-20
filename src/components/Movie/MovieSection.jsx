@@ -1,14 +1,18 @@
 import { Link } from "react-router-dom";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { useFavorites } from "../../hooks/useFavorites";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { isEasingArray } from "framer-motion";
 
 export default function MovieSection({ title, movies, linkTo }) {
     const prevRef = useRef(null);
     const nextRef = useRef(null);
+
+    const { favorites, toggleFavorite } = useFavorites();
 
     return (
         <section className="space-y-6 relative">
@@ -21,7 +25,6 @@ export default function MovieSection({ title, movies, linkTo }) {
                 )}
             </div>
 
-            {/* Slider */}
             <Swiper
                 spaceBetween={15}
                 slidesPerView={1.2}
@@ -37,7 +40,6 @@ export default function MovieSection({ title, movies, linkTo }) {
                     nextEl: nextRef.current,
                 }}
                 onInit={(swiper) => {
-                    // Gán thủ công sau khi Swiper khởi tạo
                     swiper.params.navigation.prevEl = prevRef.current;
                     swiper.params.navigation.nextEl = nextRef.current;
                     swiper.navigation.init();
@@ -45,44 +47,91 @@ export default function MovieSection({ title, movies, linkTo }) {
                 }}
                 modules={[Autoplay, Pagination, Navigation]}
             >
-                {movies.map((movie, index) => (
-                    <SwiperSlide key={index}>
-                        <div className="group relative rounded-xl overflow-hidden shadow hover:shadow-xl transition">
-                            <img
-                                src={movie.thumb_url}
-                                alt={movie.name}
-                                className="w-full max-w-full rounded-lg shadow-lg object-cover aspect-video transition-transform duration-300 hover:scale-105"
-                            />
-                            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex flex-col justify-center items-center text-white p-4">
-                                <h4
-                                    className="text-lg font-semibold mb-2 text-center truncate"
-                                    style={{ maxWidth: '200px', margin: '0 auto' }}
+                {movies.map((movie, index) => {
+                    const isFavorite = Array.isArray(favorites) && favorites.some(fav => fav.slug === movie.slug);
+
+                    return (
+                        <SwiperSlide key={index}>
+                            <div className="group relative rounded-xl overflow-hidden shadow hover:shadow-xl transition">
+                                <img
+                                    src={movie.thumb_url}
+                                    alt={movie.name}
+                                    className="w-full max-w-full rounded-lg shadow-lg object-cover aspect-video transition-transform duration-300 hover:scale-105"
+                                />
+
+                                {/* Nút yêu thích góc trên phải */}
+                                <button
+                                    onClick={() => toggleFavorite(movie)}
+                                    className="absolute top-2 right-2 z-20 p-1 rounded-full focus:outline-none"
+                                    title={isFavorite ? "Bỏ yêu thích" : "Thêm vào yêu thích"}
+                                    aria-label={isFavorite ? "Unfavorite" : "Favorite"}
                                 >
-                                    {movie.name}
-                                </h4>
-                                <p
-                                    className="text-sm text-center mb-4 truncate"
-                                    style={{ maxWidth: '200px', margin: '0 auto' }}
-                                >
-                                    {movie.origin_name}
-                                </p>
-                                <Link
-                                    to={`/movies/${movie.slug}`}
-                                    className="bg-pink-500 hover:bg-pink-600 text-white px-4 mt-4 py-2 rounded-full text-sm transition"
-                                >
-                                    🎬 Xem
-                                </Link>
+                                    {isFavorite ? (
+                                        // Trái tim đỏ (filled)
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="h-7 w-7 text-red-600 drop-shadow-md"
+                                            fill="currentColor"
+                                            viewBox="0 0 24 24"
+                                            stroke="none"
+                                        >
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                        </svg>
+                                    ) : (
+                                        // Trái tim trắng (outline)
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="h-7 w-7 text-gray-400 hover:text-red-500 transition-colors duration-300"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            strokeWidth={2}
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                                            />
+                                        </svg>
+                                    )}
+                                </button>
+
+                                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition flex flex-col justify-center items-center text-white p-4">
+                                    <h4
+                                        className="text-lg font-semibold mb-2 text-center truncate"
+                                        style={{ maxWidth: "200px", margin: "0 auto" }}
+                                    >
+                                        {movie.name}
+                                    </h4>
+                                    <p
+                                        className="text-sm text-center mb-4 truncate"
+                                        style={{ maxWidth: "200px", margin: "0 auto" }}
+                                    >
+                                        {movie.origin_name}
+                                    </p>
+                                    <Link
+                                        to={`/movies/${movie.slug}`}
+                                        className="bg-pink-500 hover:bg-pink-600 text-white px-4 mt-4 py-2 rounded-full text-sm transition"
+                                    >
+                                        🎬 Xem
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
-                    </SwiperSlide>
-                ))}
+                        </SwiperSlide>
+                    );
+                })}
             </Swiper>
 
-            {/* Nút Prev & Next */}
-            <div ref={prevRef} className="absolute top-1/2 -left-4 z-10 transform -translate-y-1/2 cursor-pointer">
+            <div
+                ref={prevRef}
+                className="absolute top-1/2 -left-4 z-10 transform -translate-y-1/2 cursor-pointer"
+            >
                 <button className="bg-white shadow p-2 rounded-full hover:bg-gray-200">◀</button>
             </div>
-            <div ref={nextRef} className="absolute top-1/2 -right-4 z-10 transform -translate-y-1/2 cursor-pointer">
+            <div
+                ref={nextRef}
+                className="absolute top-1/2 -right-4 z-10 transform -translate-y-1/2 cursor-pointer"
+            >
                 <button className="bg-white shadow p-2 rounded-full hover:bg-gray-200">▶</button>
             </div>
         </section>

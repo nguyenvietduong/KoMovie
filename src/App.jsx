@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
@@ -12,11 +13,29 @@ import LoginPage from "./pages/Auth/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import FallingEffect from "./components/FallingEffect";
 import MovieDetail from "./pages/MovieDetail";
+import MovieFavorites from "./pages/MovieFavorites";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
+    // useEffect(() => {
+    //     const handleKeyDown = (e) => {
+    //         if (
+    //             e.key === "F12" ||
+    //             (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase()))
+    //         ) {
+    //             e.preventDefault();
+    //         }
+    //     };
+
+    //     window.addEventListener("keydown", handleKeyDown);
+
+    //     return () => {
+    //         window.removeEventListener("keydown", handleKeyDown);
+    //     };
+    // }, []);
+
     return (
         <>
             <FallingEffect effect="summerSunflowers" />
@@ -28,6 +47,7 @@ export default function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/movies" element={<ListMoviePage />} />
                 <Route path="/movies/:movieSlug" element={<MovieDetail />} />
+                <Route path="/movies-favorites" element={<MovieFavorites />} />
 
                 {/* <Route path="/login" element={<LoginPage />} /> */}
                 <Route path="*" element={<NotFoundPage />} /> {/* ✅ route 404 */}

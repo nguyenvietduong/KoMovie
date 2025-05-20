@@ -1,12 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState, useContext } from "react";
 import { AuthContext } from "../pages/Auth/AuthContext";
+import SearchBar from "./SearchBar";
 
 export default function Nav() {
     const location = useLocation();
-    const { user, logout } = useContext(AuthContext);
-
+    const [loading, setLoading] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+    const { user, logout } = useContext(AuthContext);
     const [authMenuOpen, setAuthMenuOpen] = useState(false);
 
     const isActive = (path) =>
@@ -15,12 +17,13 @@ export default function Nav() {
     const navLinks = [
         { to: "/", label: "Trang chủ" },
         { to: "/movies", label: "Danh sách phim" },
+        { to: "/movies-favorites", label: "Phim yêu thích" },
     ];
 
     return (
         <>
             {/* Dòng chữ nhỏ trên header */}
-            <div className="absolute top-0 left-0 w-full bg-gray-100 text-gray-600 text-xs text-center py-1 select-none">
+            <div className="absolute top-0 left-0 w-full text-gray-600 text-xs text-center py-1 select-none">
                 Phạm Thị Thu Huyền <span className="heart-beat">❤</span> Nguyễn Viết Dương
             </div>
             <header className="bg-white shadow">
@@ -99,6 +102,8 @@ export default function Nav() {
                             </Link>
                         ))}
                     </div>
+
+                    <SearchBar />
 
                     {/* Right side: Search, Language, User */}
                     {/* <div className="hidden lg:flex lg:items-center lg:gap-x-6">
