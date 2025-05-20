@@ -297,7 +297,7 @@ export default function ListMovie() {
                     disabled={currentPage === 1 || loading}
                     className={`px-4 py-2 border rounded ${currentPage === 1 || loading
                         ? "boder-[3px] text-gray-400 cursor-not-allowed"
-                        : "boder-[3px] text-white hover:bg-blue-100 hover:text-black"
+                        : "boder-[3px] text-white hover:bg-green-600 hover:text-black"
                         }`}
                 >
                     Trở về
@@ -313,8 +313,8 @@ export default function ListMovie() {
                             key={idx}
                             onClick={() => setCurrentPage(page)}
                             className={`px-4 py-2 border rounded ${currentPage === page
-                                ? "boder-[3px] text-black bg-blue-100"
-                                : "boder-[3px] text-white hover:bg-blue-100 hover:text-black"
+                                ? "boder-[3px] text-black bg-green-600"
+                                : "boder-[3px] text-white hover:bg-green-600 hover:text-black"
                                 }`}
                         >
                             {page}
@@ -327,8 +327,8 @@ export default function ListMovie() {
                     onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                     disabled={currentPage === totalPages}
                     className={`px-4 py-2 border rounded ${currentPage === totalPages
-                        ? "boder-[3px] text-gray-400 cursor-not-allowed"
-                        : "boder-[3px] text-white hover:bg-blue-100 hover:text-black"
+                        ? "boder-[3px] text-green-600 cursor-not-allowed"
+                        : "boder-[3px] text-white hover:bg-green-600 hover:text-black"
                         }`}
                 >
                     Tiếp

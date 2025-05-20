@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 
 export default function Breadcrumb({ items }) {
     return (
-        <nav className="text-sm text-white mb-2" aria-label="Breadcrumb">
+        <nav className="text-sm text-green-600 mb-2" aria-label="Breadcrumb">
             <ol className="list-reset flex flex-wrap items-center">
                 {items.map((item, index) => {
                     const isLast = index === items.length - 1;
                     return (
                         <li key={index} className="flex items-center">
                             {!isLast ? (
-                                <Link to={item.to} className="text-white hover:underline">
+                                <Link to={item.to} className="text-green-600600 hover:underline">
                                     {item.label}
                                 </Link>
                             ) : (
