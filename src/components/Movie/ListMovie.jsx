@@ -11,13 +11,44 @@ const genres = [
     { label: "Hành động", value: "hanh-dong" },
     { label: "Tình cảm", value: "tinh-cam" },
     { label: "Hài", value: "hai-huoc" },
+    { label: "Kinh dị", value: "kinh-di" },
+    { label: "Viễn tưởng", value: "vien-tuong" },
+    { label: "Hoạt hình", value: "hoat-hinh" },
+    { label: "Tâm lý", value: "tam-ly" },
+    { label: "Hình sự", value: "hinh-su" },
+    { label: "Chiến tranh", value: "chien-tranh" },
+    { label: "Cổ trang", value: "co-trang" },
+    { label: "Võ thuật", value: "vo-thuat" },
+    { label: "Phiêu lưu", value: "phieu-luu" },
+    { label: "Thần thoại", value: "than-thoai" },
+    { label: "TV Show", value: "tv-show" },
+    { label: "Tài liệu", value: "tai-lieu" },
+    { label: "Âm nhạc", value: "am-nhac" },
+    { label: "Gia đình", value: "gia-dinh" },
+    { label: "Học đường", value: "hoc-duong" }
 ];
 
 const countries = [
     { label: "Quốc gia", value: "" },
     { label: "Việt Nam", value: "viet-nam" },
     { label: "Hàn Quốc", value: "han-quoc" },
+    { label: "Nhật Bản", value: "nhat-ban" },
+    { label: "Trung Quốc", value: "trung-quoc" },
+    { label: "Thái Lan", value: "thai-lan" },
+    { label: "Pháp", value: "phap" },
     { label: "Mỹ", value: "my" },
+    { label: "Anh", value: "anh" },
+    { label: "Đức", value: "duc" },
+    { label: "Ấn Độ", value: "an-do" },
+    { label: "Canada", value: "canada" },
+    { label: "Tây Ban Nha", value: "tay-ban-nha" },
+    { label: "Ý", value: "y" },
+    { label: "Úc", value: "uc" },
+    { label: "Nga", value: "nga" },
+    { label: "Philippines", value: "philippines" },
+    { label: "Indonesia", value: "indonesia" },
+    { label: "Brazil", value: "brazil" },
+    { label: "Mexico", value: "mexico" }
 ];
 
 const years = Array.from({ length: 10 }).map((_, i) => {
@@ -111,31 +142,62 @@ export default function ListMovie() {
 
             {/* BỘ LỌC & TÌM KIẾM */}
             <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-                <select
-                    className="px-4 py-2 border rounded shadow-sm"
-                    value={filters.genre}
-                    onChange={(e) => setFilters({ ...filters, genre: e.target.value })}
-                >
-                    {genres.map((g, i) => <option key={i} value={g.value}>{g.label}</option>)}
-                </select>
+                {/* Select thể loại */}
+                <div className="relative inline-block w-40">
+                    <select
+                        className="block w-full px-4 py-2 border border-gray-300 rounded appearance-none shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        value={filters.genre}
+                        onChange={(e) => setFilters({ ...filters, genre: e.target.value })}
+                    >
+                        {genres.map((g, i) => (
+                            <option key={i} value={g.value}>
+                                {g.label}
+                            </option>
+                        ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-2 flex items-center text-gray-500">
+                        ▼
+                    </div>
+                </div>
 
-                <select
-                    className="px-4 py-2 border rounded shadow-sm"
-                    value={filters.country}
-                    onChange={(e) => setFilters({ ...filters, country: e.target.value })}
-                >
-                    {countries.map((c, i) => <option key={i} value={c.value}>{c.label}</option>)}
-                </select>
+                {/* Select quốc gia */}
+                <div className="relative inline-block w-40">
+                    <select
+                        className="block w-full px-4 py-2 border border-gray-300 rounded appearance-none shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        value={filters.country}
+                        onChange={(e) => setFilters({ ...filters, country: e.target.value })}
+                    >
+                        {countries.map((c, i) => (
+                            <option key={i} value={c.value}>
+                                {c.label}
+                            </option>
+                        ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-2 flex items-center text-gray-500">
+                        ▼
+                    </div>
+                </div>
 
-                <select
-                    className="px-4 py-2 border rounded shadow-sm"
-                    value={filters.year}
-                    onChange={(e) => setFilters({ ...filters, year: e.target.value })}
-                >
-                    <option value="">Năm</option>
-                    {years.map((y, i) => <option key={i} value={y.value}>{y.label}</option>)}
-                </select>
+                {/* Select năm */}
+                <div className="relative inline-block w-40">
+                    <select
+                        className="block w-full px-4 py-2 border border-gray-300 rounded appearance-none shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        value={filters.year}
+                        onChange={(e) => setFilters({ ...filters, year: e.target.value })}
+                    >
+                        <option value="">Năm</option>
+                        {years.map((y, i) => (
+                            <option key={i} value={y.value}>
+                                {y.label}
+                            </option>
+                        ))}
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-2 flex items-center text-gray-500">
+                        ▼
+                    </div>
+                </div>
 
+                {/* Ô tìm kiếm */}
                 <input
                     type="text"
                     value={search}
@@ -144,7 +206,7 @@ export default function ListMovie() {
                         setCurrentPage(1);
                     }}
                     placeholder="Tìm kiếm tên phim..."
-                    className="px-4 py-2 border rounded shadow-sm w-60"
+                    className="px-4 py-2 border border-gray-300 rounded shadow-sm w-60 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
             </div>
 
@@ -238,7 +300,7 @@ export default function ListMovie() {
                         : "boder-[3px] text-white hover:bg-blue-100 hover:text-black"
                         }`}
                 >
-                    Prev
+                    Trở về
                 </button>
 
                 {getPages().map((page, idx) =>
@@ -269,7 +331,7 @@ export default function ListMovie() {
                         : "boder-[3px] text-white hover:bg-blue-100 hover:text-black"
                         }`}
                 >
-                    Next
+                    Tiếp
                 </button>
             </div>
         </div>

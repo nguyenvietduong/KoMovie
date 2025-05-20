@@ -130,7 +130,6 @@ export default function SearchBar() {
                         setCurrentPage(1);
                         setHasMore(true);
                     } else {
-                        // Nếu modal đóng thì mở modal
                         setSearchTerm(true);
                     }
                 }}

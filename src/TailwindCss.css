@@ -7,6 +7,25 @@
         font-family: 'Inter', sans-serif;
         background-image: url(https://tfhtml.themepul.com/zmovo/image/body.jpg);
     }
+
+    body,
+    * {
+        cursor: pointer;
+    }
+
+    .cursor-circle {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 20px;
+        height: 20px;
+        border: 2px solid green;
+        border-radius: 50%;
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
 }
 
 @layer utilities {
