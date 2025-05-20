@@ -13,7 +13,7 @@ export default function Slider({ movies }) {
                 autoplay={{ delay: 4000 }}
                 loop={true}
                 pagination={{ clickable: true }}
-                className="h-[700px]"
+                className="h-[500px]"
             >
                 {movies.map((movie) => (
                     <SwiperSlide key={movie.id}>

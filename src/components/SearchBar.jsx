@@ -140,7 +140,7 @@ export default function SearchBar() {
 
             {searchTerm && (
                 <div
-                    className="absolute left-40 mt-1 lg:left-2 lg:mt-2 w-48 rounded-md bg-gray-900 shadow-lg ring-1 ring-gray-700 ring-opacity-50 z-50"
+                    className="absolute left-40 mt-1 lg:left-[-100px] lg:mt-2 w-48 rounded-md bg-gray-900 shadow-lg ring-1 ring-gray-700 ring-opacity-50 z-50"
                     onClick={(e) => e.stopPropagation()}
                 >
                     <div className="absolute top-full -left-44 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-gray-900 shadow-2xl ring-1 ring-gray-700">

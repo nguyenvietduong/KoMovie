@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { useFavorites } from "../../hooks/useFavorites";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { isEasingArray } from "framer-motion";
 
 export default function MovieSection({ title, movies, linkTo }) {
     const prevRef = useRef(null);
@@ -19,7 +18,7 @@ export default function MovieSection({ title, movies, linkTo }) {
             <div className="flex items-center justify-between">
                 <h3 className="text-2xl font-semibold text-white">{title}</h3>
                 {linkTo && (
-                    <Link to={linkTo} className="text-pink-500 hover:underline text-sm">
+                    <Link to={linkTo} className="text-white hover:underline text-sm">
                         Xem tất cả →
                     </Link>
                 )}
@@ -52,7 +51,7 @@ export default function MovieSection({ title, movies, linkTo }) {
 
                     return (
                         <SwiperSlide key={index}>
-                            <Link to={`/movies/${movie.slug}`} className="group relative rounded-xl overflow-hidden shadow hover:shadow-xl transition">
+                            <div className="group relative rounded-xl overflow-hidden shadow hover:shadow-xl transition">
                                 <img
                                     src={movie.thumb_url}
                                     alt={movie.name}
@@ -110,7 +109,19 @@ export default function MovieSection({ title, movies, linkTo }) {
                                         {movie.origin_name}
                                     </p>
                                 </div>
-                            </Link>
+
+                                <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <Link to={`/movies/${movie.slug}`} className="group w-14 h-14 flex items-center justify-center rounded-full bg-black transition-colors duration-500 hover:bg-red-600 hover:animate-spin-once">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24"
+                                            className="w-6 h-6 text-white transition-colors duration-500 group-hover:text-green-400"
+                                        >
+                                            <polygon points="9.5,7.5 16,12 9.5,16.5" fill="currentColor" />
+                                        </svg>
+                                    </Link>
+                                </div>
+                            </div>
                         </SwiperSlide>
                     );
                 })}

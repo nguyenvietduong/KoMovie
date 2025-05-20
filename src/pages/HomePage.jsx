@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import Breadcrumb from "../components/Breadcrumb";
 import Slider from "../components/Slider";
 import MovieSection from "../components/Movie/MovieSection";
+import MovieTabs from "../components/Movie/MovieTabs";
 import { useEffect, useState } from "react";
 import movieService from '../services/MovieService';
 
@@ -46,7 +46,7 @@ export default function HomePage() {
                 <Breadcrumb items={breadcrumbItems} />
 
                 <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-8 text-center">
-                    Chào mừng đến với KoMovies - Thế Giới Giải Trí Trong Tầm Tay!
+                    Chào mừng đến với KoMovie - Thế Giới Giải Trí Trong Tầm Tay!
                 </h2>
 
                 {loading && <p>Đang tải phim mới...</p>}
@@ -58,14 +58,7 @@ export default function HomePage() {
 
                 <MovieSection title="| Top Phim Đang Hot" movies={hotMovies} linkTo="/movies?type=phim-hot" />
 
-                <div className="text-center">
-                    <Link
-                        to="/movies"
-                        className="inline-block px-4 py-3 rounded-full border-[3px] border-green-600 text-green-600 font-semibold text-lg hover:bg-green-600 hover:text-white transition-all duration-300 shadow-sm"
-                    >
-                        🎬 Xem Tất Cả Phim
-                    </Link>
-                </div>
+                <MovieTabs />
             </div>
         </>
     );

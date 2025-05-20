@@ -159,7 +159,7 @@ export default function ListMovie() {
                         const isFavorite = Array.isArray(favorites) && favorites.some(fav => fav._id === movie._id);
 
                         return (
-                            <Link to={`/movies/${movie.slug}`} key={movie._id} className="relative group bg-white shadow rounded overflow-hidden">
+                            <div key={movie._id} className="relative group bg-white shadow rounded overflow-hidden">
                                 <img
                                     src={"https://phimimg.com/" + movie.poster_url}
                                     alt={movie.name}
@@ -168,7 +168,10 @@ export default function ListMovie() {
 
                                 {/* Nút yêu thích góc trên phải */}
                                 <button
-                                    onClick={() => toggleFavorite(movie)}
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        toggleFavorite(movie);
+                                    }}
                                     className="absolute top-2 right-2 z-10 p-1 rounded-full focus:outline-none"
                                     title={isFavorite ? "Bỏ yêu thích" : "Thêm vào yêu thích"}
                                     aria-label={isFavorite ? "Unfavorite" : "Favorite"}
@@ -206,8 +209,18 @@ export default function ListMovie() {
                                     <p className="text-xs text-gray-500">{movie.country?.[0].name} • {movie.year}</p>
                                 </div>
 
-                                <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            </Link>
+                                <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <Link to={`/movies/${movie.slug}`} className="group w-14 h-14 flex items-center justify-center rounded-full bg-black transition-colors duration-500 hover:bg-red-600 hover:animate-spin-once">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24"
+                                            className="w-6 h-6 text-white transition-colors duration-500 group-hover:text-green-400"
+                                        >
+                                            <polygon points="9.5,7.5 16,12 9.5,16.5" fill="currentColor" />
+                                        </svg>
+                                    </Link>
+                                </div>
+                            </div>
                         );
                     })}
                 </div>

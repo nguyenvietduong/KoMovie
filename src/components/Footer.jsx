@@ -6,11 +6,11 @@ export default function Footer() {
                     className="font-semibold text-base sm:text-lg md:text-xl text-white"
                     id="footer-title"
                 >
-                    🎬 Thế Giới Phim Mới Nhất
+                    🎬 KoMovie Thế Giới Phim Mới Nhất
                 </p>
 
-                <p className="text-sm sm:text-base text-white max-w-xl mx-auto">
-                    Cập nhật liên tục các bộ phim hot, đa dạng thể loại từ hành động, phiêu lưu, đến hoạt hình và drama. Đem đến cho bạn trải nghiệm xem phim trực tuyến chất lượng và hấp dẫn nhất.
+                <p className="text-sm sm:text-base text-white max-w-auth mx-auto">
+                    Cập nhật liên tục các bộ phim hot, đa dạng thể loại từ hành động, phiêu lưu. Đem đến cho bạn trải nghiệm xem phim trực tuyến chất lượng và hấp dẫn nhất.
                 </p>
 
                 <p className="text-xs sm:text-sm text-white mt-6" id="footer-contact">
