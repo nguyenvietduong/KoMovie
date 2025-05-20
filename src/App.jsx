@@ -38,7 +38,7 @@ export default function App() {
 
     return (
         <>
-            <FallingEffect effect="summerSunflowers" />
+            <FallingEffect effect="snowflakes" />
             <ToastContainer />
             <ScrollToTopButton />
             <LoadingScreen />

@@ -17,7 +17,7 @@ export default function MovieSection({ title, movies, linkTo }) {
     return (
         <section className="space-y-6 relative">
             <div className="flex items-center justify-between">
-                <h3 className="text-2xl font-semibold text-blue-600">{title}</h3>
+                <h3 className="text-2xl font-semibold text-white">{title}</h3>
                 {linkTo && (
                     <Link to={linkTo} className="text-pink-500 hover:underline text-sm">
                         Xem tất cả →
@@ -52,7 +52,7 @@ export default function MovieSection({ title, movies, linkTo }) {
 
                     return (
                         <SwiperSlide key={index}>
-                            <div className="group relative rounded-xl overflow-hidden shadow hover:shadow-xl transition">
+                            <Link to={`/movies/${movie.slug}`} className="group relative rounded-xl overflow-hidden shadow hover:shadow-xl transition">
                                 <img
                                     src={movie.thumb_url}
                                     alt={movie.name}
@@ -109,14 +109,8 @@ export default function MovieSection({ title, movies, linkTo }) {
                                     >
                                         {movie.origin_name}
                                     </p>
-                                    <Link
-                                        to={`/movies/${movie.slug}`}
-                                        className="bg-pink-500 hover:bg-pink-600 text-white px-4 mt-4 py-2 rounded-full text-sm transition"
-                                    >
-                                        🎬 Xem
-                                    </Link>
                                 </div>
-                            </div>
+                            </Link>
                         </SwiperSlide>
                     );
                 })}
@@ -126,13 +120,13 @@ export default function MovieSection({ title, movies, linkTo }) {
                 ref={prevRef}
                 className="absolute top-1/2 -left-4 z-10 transform -translate-y-1/2 cursor-pointer"
             >
-                <button className="bg-white shadow p-2 rounded-full hover:bg-gray-200">◀</button>
+                <button className="bg-white shadow p-2 w-[50px] h-[50px] rounded-full hover:bg-green-600">◀</button>
             </div>
             <div
                 ref={nextRef}
                 className="absolute top-1/2 -right-4 z-10 transform -translate-y-1/2 cursor-pointer"
             >
-                <button className="bg-white shadow p-2 rounded-full hover:bg-gray-200">▶</button>
+                <button className="bg-white shadow p-2 w-[50px] h-[50px] rounded-full hover:bg-green-600">▶</button>
             </div>
         </section>
     );

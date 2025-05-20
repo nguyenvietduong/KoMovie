@@ -37,7 +37,7 @@ export default function MovieDetail() {
         { label: movie ? movie.name : "Không tìm thấy", to: "#" },
     ];
 
-    if (loading) return <p className="text-center mt-10">Đang tải phim...</p>;
+    if (loading) return <p className="text-center mt-10 text-white py-72">Đang tải phim...</p>;
     if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
     if (!movie) return null;
 
@@ -53,9 +53,7 @@ export default function MovieDetail() {
                 <div
                     className="absolute inset-0 bg-cover bg-center z-0"
                     style={{
-                        backgroundImage: `url(${movie.thumb_url})`,
-                        filter: "blur(10px)",
-                        transform: "scale(1.05)",
+                        backgroundImage: `url(${movie.thumb_url})`
                     }}
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-70 z-10" />
@@ -76,7 +74,7 @@ export default function MovieDetail() {
                             <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 rounded-lg">
                                 <button
                                     onClick={() => setTrailerSrc(movie.trailer_url)}
-                                    className="bg-white text-pink-600 px-4 py-2 rounded hover:bg-pink-100"
+                                    className=" text-white px-4 border-[3px] border-green-500 py-2 rounded hover:bg-green-600"
                                 >
                                     📺 Trailer
                                 </button>

@@ -45,7 +45,7 @@ export default function HomePage() {
             <div className="container mx-auto px-4 py-10 space-y-16">
                 <Breadcrumb items={breadcrumbItems} />
 
-                <h2 className="text-2xl sm:text-3xl font-extrabold text-blue-700 mb-8 text-center">
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-8 text-center">
                     Chào mừng đến với KoMovies - Thế Giới Giải Trí Trong Tầm Tay!
                 </h2>
 
@@ -53,15 +53,15 @@ export default function HomePage() {
                 {error && <p className="text-red-600">{error}</p>}
 
                 {!loading && !error && (
-                    <MovieSection title="Phim Mới Cập Nhật" movies={newMovies} linkTo="/movies?type=phim-moi" />
+                    <MovieSection title="| Phim Mới Cập Nhật" movies={newMovies} linkTo="/movies?type=phim-moi" />
                 )}
 
-                <MovieSection title="Top Phim Đang Hot" movies={hotMovies} linkTo="/movies?type=phim-hot" />
+                <MovieSection title="| Top Phim Đang Hot" movies={hotMovies} linkTo="/movies?type=phim-hot" />
 
                 <div className="text-center">
                     <Link
                         to="/movies"
-                        className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-medium text-lg px-8 py-3 rounded-full transition"
+                        className="inline-block px-4 py-3 rounded-full border-[3px] border-green-600 text-green-600 font-semibold text-lg hover:bg-green-600 hover:text-white transition-all duration-300 shadow-sm"
                     >
                         🎬 Xem Tất Cả Phim
                     </Link>

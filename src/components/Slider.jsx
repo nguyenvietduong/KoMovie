@@ -13,11 +13,11 @@ export default function Slider({ movies }) {
                 autoplay={{ delay: 4000 }}
                 loop={true}
                 pagination={{ clickable: true }}
-                className="h-[550px]"
+                className="h-[700px]"
             >
                 {movies.map((movie) => (
                     <SwiperSlide key={movie.id}>
-                        <div className="relative w-full h-full">
+                        <Link to={`/movies/${movie.slug}`} className="relative w-full h-full">
                             <img
                                 src={movie.thumb_url}
                                 alt="Background"
@@ -40,18 +40,12 @@ export default function Slider({ movies }) {
                                         {movie.origin_name || "Mô tả phim chưa có."}
                                     </p>
                                     <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                                        <Link
-                                            to={`/movies/${movie.slug}.html`}
-                                            className="px-8 py-3 rounded-full bg-gradient-to-r from-pink-300 via-pink-200 to-pink-300 text-pink-700 font-semibold shadow-md hover:shadow-lg hover:from-pink-400 hover:to-pink-400 transition-all duration-300 flex items-center gap-2 justify-center"
-                                        >
-                                            ▶️ <span className="text-lg">Xem Ngay</span>
-                                        </Link>
                                         {movie.trailerUrl && (
                                             <a
                                                 href={movie.trailerUrl}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="px-6 py-2 rounded-full bg-gray-200 text-pink-600 hover:bg-gray-300 transition"
+                                                className="px-6 py-2 rounded-full bg-gray-200 text-green-600 hover:bg-gray-300 transition"
                                             >
                                                 🎬 Trailer
                                             </a>
@@ -59,7 +53,7 @@ export default function Slider({ movies }) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     </SwiperSlide>
                 ))}
             </Swiper>

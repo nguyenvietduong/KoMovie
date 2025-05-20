@@ -106,7 +106,7 @@ export default function ListMovie() {
 
     return (
         <div className="p-4">
-            <h2 className="text-3xl font-bold text-center text-blue-600 mb-6">Danh Sách Phim</h2>
+            <h2 className="text-3xl font-bold text-center text-white mb-6">Danh Sách Phim</h2>
 
             {/* BỘ LỌC & TÌM KIẾM */}
             <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
@@ -149,7 +149,7 @@ export default function ListMovie() {
 
             {/* DANH SÁCH PHIM */}
             {loading ? (
-                <p className="text-center text-gray-500">Đang tải phim...</p>
+                <p className="text-center text-white">Đang tải phim...</p>
             ) : movies.length === 0 ? (
                 <p className="text-center text-red-500 font-semibold">Không tìm thấy phim</p>
             ) : (
@@ -206,7 +206,7 @@ export default function ListMovie() {
                                 </div>
 
                                 <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <a href={`/movies/${movie.slug}`} className="bg-pink-500 text-white px-4 py-2 text-sm rounded-full hover:bg-pink-600 transition">🎬 Xem</a>
+                                    <a href={`/movies/${movie.slug}`} className="bg-green-500 text-white px-4 py-2 text-sm rounded-full hover:bg-green-600 transition">🎬 Xem</a>
                                 </div>
                             </div>
                         );
@@ -222,8 +222,8 @@ export default function ListMovie() {
                     onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
                     disabled={currentPage === 1 || loading}
                     className={`px-4 py-2 border rounded ${currentPage === 1 || loading
-                        ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                        : "bg-white text-blue-600 hover:bg-blue-100"
+                        ? "boder-[3px] text-gray-400 cursor-not-allowed"
+                        : "boder-[3px] text-white hover:bg-blue-100 hover:text-black"
                         }`}
                 >
                     Prev
@@ -239,8 +239,8 @@ export default function ListMovie() {
                             key={idx}
                             onClick={() => setCurrentPage(page)}
                             className={`px-4 py-2 border rounded ${currentPage === page
-                                ? "bg-blue-500 text-white"
-                                : "bg-white text-blue-600 hover:bg-blue-100"
+                                ? "boder-[3px] text-black bg-blue-100"
+                                : "boder-[3px] text-white hover:bg-blue-100 hover:text-black"
                                 }`}
                         >
                             {page}
@@ -253,8 +253,8 @@ export default function ListMovie() {
                     onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
                     disabled={currentPage === totalPages}
                     className={`px-4 py-2 border rounded ${currentPage === totalPages
-                        ? "bg-gray-200 text-gray-400 cursor-not-allowed"
-                        : "bg-white text-blue-600 hover:bg-blue-100"
+                        ? "boder-[3px] text-gray-400 cursor-not-allowed"
+                        : "boder-[3px] text-white hover:bg-blue-100 hover:text-black"
                         }`}
                 >
                     Next

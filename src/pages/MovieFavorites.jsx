@@ -21,13 +21,13 @@ export default function MovieFavorites() {
     return (
         <div className="container mx-auto px-4 py-8">
             <Breadcrumb items={breadcrumbItems} />
-            <h2 className="text-3xl font-bold text-center text-blue-600 mb-6">🎬 Phim yêu thích của bạn</h2>
+            <h2 className="text-3xl font-bold text-center text-white mb-6">🎬 Phim yêu thích của bạn</h2>
 
             {favorites.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-20 text-center text-gray-500">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-16 w-16 mb-4 text-pink-400"
+                        className="h-16 w-16 mb-4 text-red-600"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -39,10 +39,10 @@ export default function MovieFavorites() {
                             d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
                         />
                     </svg>
-                    <p className="text-lg font-medium">Bạn chưa có phim yêu thích nào.</p>
+                    <p className="text-lg font-medium text-white">Bạn chưa có phim yêu thích nào.</p>
                     <Link
                         to="/"
-                        className="mt-4 inline-block px-6 py-2 bg-pink-500 text-white rounded-full hover:bg-pink-600 transition"
+                        className="mt-4 inline-block px-6 py-2 border-[3px] border-green-600 text-white rounded-full hover:bg-green-600 transition"
                     >
                         Về trang chủ để chọn phim
                     </Link>
