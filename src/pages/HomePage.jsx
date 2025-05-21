@@ -19,27 +19,41 @@ export default function HomePage() {
     }
 
     useEffect(() => {
-        async function fetchMovies() {
+        const fetchSliderAndNewMovies = async () => {
             setLoading(true);
             setError(null);
             try {
-                const [dataSliders, dataNewMovies, dataHotMovies] = await Promise.all([
-                    movieService.fetchNewMovies(randum()),
-                    movieService.fetchNewMovies(randum()),
-                    movieService.fetchNewMovies(randum()),
+                const fetchRandom = () => movieService.fetchNewMovies(randum());
+
+                const [sliderRes, newMoviesRes] = await Promise.all([
+                    fetchRandom(),
+                    fetchRandom()
                 ]);
 
-                setDataSliderMovies(dataSliders.items || []);
-                setNewMovies(dataNewMovies.items || []);
-                setHotMovies(dataHotMovies.items || []);
+                setDataSliderMovies(sliderRes.items || []);
+                setNewMovies(newMoviesRes.items || []);
             } catch (err) {
+                console.error(err);
                 setError("Không thể tải phim mới");
             } finally {
                 setLoading(false);
             }
-        }
+        };
 
-        fetchMovies();
+        fetchSliderAndNewMovies();
+    }, []);
+
+    useEffect(() => {
+        const fetchHotMovies = async () => {
+            try {
+                const hotRes = await movieService.fetchNewMovies(randum());
+                setHotMovies(hotRes.items || []);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+
+        fetchHotMovies();
     }, []);
 
     return (

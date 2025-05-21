@@ -16,6 +16,7 @@ import MovieDetail from "./pages/MovieDetail";
 import MovieFavorites from "./pages/MovieFavorites";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import YouTubePage from "./pages/YouTubePage";
 
 export default function App() {
     useEffect(() => {
@@ -69,6 +70,7 @@ export default function App() {
                 <Route path="/movies" element={<ListMoviePage />} />
                 <Route path="/movies/:movieSlug" element={<MovieDetail />} />
                 <Route path="/movies-favorites" element={<MovieFavorites />} />
+                <Route path="/youtube" element={<YouTubePage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <Footer />

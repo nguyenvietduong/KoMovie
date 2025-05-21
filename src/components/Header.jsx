@@ -15,6 +15,7 @@ export default function Nav() {
         { to: "/", label: "Trang chủ" },
         { to: "/movies", label: "Danh sách phim" },
         { to: "/movies-favorites", label: `Phim yêu thích (${favorites.length})` },
+        { to: "/youtube", label: "Youtube" },
     ];
 
     return (
