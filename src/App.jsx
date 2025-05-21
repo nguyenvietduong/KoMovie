@@ -13,10 +13,13 @@ import NotFoundPage from "./pages/NotFoundPage";
 import FallingEffect from "./components/FallingEffect";
 import AIChatWidget from './components/AIChatWidget';
 import MovieDetail from "./pages/MovieDetail";
+import LoginPage from "./pages/Auth/LoginPage";
 import MovieFavorites from "./pages/MovieFavorites";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import YouTubePage from "./pages/YouTubePage";
+import RegisterPage from "./pages/Auth/RegisterPage";
+import SharedWatchRoomPage from "./pages/SharedWatchRoomPage";
 
 export default function App() {
     const [selectedSrc, setSelectedSrc] = useState(null);
@@ -134,8 +137,11 @@ export default function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/movies" element={<ListMoviePage />} />
                 <Route path="/movies/:movieSlug" element={<MovieDetail />} />
+                <Route path="/watch-room/:watchRoom/:movieSlug" element={<SharedWatchRoomPage />} />
                 <Route path="/movies-favorites" element={<MovieFavorites />} />
                 <Route path="/youtube" element={<YouTubePage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <Footer />
