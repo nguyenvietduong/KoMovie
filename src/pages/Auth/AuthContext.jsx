@@ -10,9 +10,20 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         const storedToken = localStorage.getItem("token");
         const storedUser = localStorage.getItem("user");
-        if (storedToken && storedUser) {
-            setToken(storedToken);
-            setUser(JSON.parse(storedUser));
+
+        try {
+            if (storedToken && storedUser !== "undefined") {
+                setToken(storedToken);
+                setUser(JSON.parse(storedUser));
+            } else {
+                // Dọn sạch nếu lỗi
+                localStorage.removeItem("user");
+                localStorage.removeItem("token");
+            }
+        } catch (err) {
+            console.error("Lỗi khi parse dữ liệu user:", err);
+            localStorage.removeItem("user");
+            localStorage.removeItem("token");
         }
     }, []);
 

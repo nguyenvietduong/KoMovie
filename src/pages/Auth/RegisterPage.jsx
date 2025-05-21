@@ -32,7 +32,9 @@ export default function RegisterPage() {
         }
 
         try {
-            const data = await authService.register(name, email, password, confirmPassword);
+            const data = await authService.register(name, email, password);
+            console.log(data);
+            
             register(data.user, data.token);
             navigate("/");
         } catch (error) {
