@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Breadcrumb from "../components/Breadcrumb";
-import WatchPlayer from "../components/WatchPlayer";
 
 const API_KEY = "AIzaSyDb2l6VYNttvyVlWvZRMC4B8ML62atZRN8";
 const YOUTUBE_API = "https://www.googleapis.com/youtube/v3/search";
 
-export default function YouTubePage() {
+export default function YouTubePage({ onSelectVideo }) {
     const [videos, setVideos] = useState([]);
     const [query, setQuery] = useState("Lofi Music");
-    const [selectedSrc, setSelectedSrc] = useState(null);
 
     const breadcrumbItems = [
         { label: "Trang chủ", to: '/' },
@@ -58,10 +56,13 @@ export default function YouTubePage() {
                     {videos.map((video) => (
                         <button
                             key={video.id.videoId}
-                            onClick={() => setSelectedSrc(`https://www.youtube.com/embed/${video.id.videoId}`)}
+                            onClick={() =>
+                                onSelectVideo(
+                                    `https://www.youtube.com/embed/${video.id.videoId}`
+                                )
+                            }
                             className="text-left bg-gray-900 rounded-lg overflow-hidden hover:scale-[1.02] transition-transform shadow-md"
                         >
-                            {/* Thumbnail */}
                             <div className="relative">
                                 <img
                                     src={video.snippet.thumbnails.high.url}
@@ -73,13 +74,8 @@ export default function YouTubePage() {
                                 </div>
                             </div>
 
-                            {/* Video Info */}
                             <div className="flex gap-3 p-3">
-                                {/* Avatar giả lập */}
-                                <div className="w-10 h-10 rounded-full bg-gray-700 flex-shrink-0">
-                                    <img className="rounded-full" src="https://scontent.fhan2-3.fna.fbcdn.net/v/t39.30808-1/499431860_1184152933444845_2540510630034471305_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=101&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeGR1z0wHKcpI3Tv90WXZHWoiREEE0rz9WqJEQQTSvP1atKOb57_yhxgtBvyyuaBFIn9SJ1ToFlfy1gvqFGNcOej&_nc_ohc=VliwfFudp4gQ7kNvwEAoZzA&_nc_oc=AdnsOi--b95oMTI30YKE21Ae5Q8Fn3rj4gjFL0HJSIkfbicu-twkzQFIMCOMKAC3i7c&_nc_zt=24&_nc_ht=scontent.fhan2-3.fna&_nc_gid=Xu8I3W7ssOd33cHw6EwpTQ&oh=00_AfJZXxckVKA9te2UOeS5HBEBrRApWyHTdop35dWc8AysLA&oe=68332802" alt="" />
-                                </div>
-
+                                <div className="w-10 h-10 rounded-full bg-gray-700 flex-shrink-0"></div>
                                 <div className="flex-1">
                                     <h3 className="text-white font-semibold line-clamp-2">
                                         {video.snippet.title}
@@ -93,9 +89,6 @@ export default function YouTubePage() {
                     ))}
                 </div>
             </div>
-
-            {/* Player modal khi click */}
-            {selectedSrc && <WatchPlayer src={selectedSrc} onClose={() => setSelectedSrc(null)} />}
         </>
     );
 }
