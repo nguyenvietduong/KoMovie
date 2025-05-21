@@ -4,6 +4,7 @@ import WatchPlayer from "../components/WatchPlayer";
 import TrailerPlayer from "../components/TrailerPlayer";
 import Breadcrumb from '../components/Breadcrumb';
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 export default function MovieDetail() {
     const { movieSlug } = useParams();
@@ -50,6 +51,10 @@ export default function MovieDetail() {
 
     return (
         <>
+            <Helmet>
+                <title>{movie.name} | KoMovie</title>
+            </Helmet>
+
             <div className="container mx-auto px-4 py-4">
                 <Breadcrumb items={breadcrumbItems} />
             </div>
@@ -161,7 +166,7 @@ export default function MovieDetail() {
                                         🎬 Xem Phim
                                     </span>
 
-                                        <span className="absolute inset-0 bg-green-600 scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100 z-0 rounded"></span>
+                                    <span className="absolute inset-0 bg-green-600 scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100 z-0 rounded"></span>
                                 </button>
                             )}
 

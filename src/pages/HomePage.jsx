@@ -4,6 +4,7 @@ import MovieSection from "../components/Movie/MovieSection";
 import MovieTabs from "../components/Movie/MovieTabs";
 import { useEffect, useState } from "react";
 import movieService from '../services/MovieService';
+import { Helmet } from "react-helmet";
 
 export default function HomePage() {
     const breadcrumbItems = [{ label: "Trang chủ", path: "/" }];
@@ -58,6 +59,10 @@ export default function HomePage() {
 
     return (
         <>
+            <Helmet>
+                <title>Xem phim miễn phí chất lượng cao | KoMovie</title>
+            </Helmet>
+
             <Slider movies={dataSliderMovies} />
 
             <div className="container mx-auto px-4 py-10 space-y-16">

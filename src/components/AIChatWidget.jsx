@@ -18,9 +18,14 @@ const AIChatWidget = () => {
     // Đóng modal khi click ra ngoài
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (chatBoxRef.current && !chatBoxRef.current.contains(event.target)) {
-                setIsOpen(false);
-            }
+            // Nếu click vào chat box thì không đóng
+            if (chatBoxRef.current?.contains(event.target)) return;
+
+            // Nếu click vào nút toggle thì không đóng
+            const toggleButton = document.getElementById('chat-toggle-button');
+            if (toggleButton?.contains(event.target)) return;
+
+            setIsOpen(false);
         };
 
         if (isOpen) {
@@ -79,6 +84,7 @@ const AIChatWidget = () => {
         <>
             {/* Nút mở chat */}
             <button
+                id="chat-toggle-button"
                 aria-label={isOpen ? 'Đóng chat' : 'Mở chat'}
                 className="fixed bottom-5 right-5 bg-green-600 hover:bg-green-700 text-white w-16 h-16 rounded-full shadow-lg flex items-center justify-center text-2xl z-50 transition"
                 onClick={() => setIsOpen(!isOpen)}
@@ -87,7 +93,7 @@ const AIChatWidget = () => {
             </button>
 
             {/* Hộp chat */}
-            {isOpen && (
+            {isOpen ? (
                 <div
                     ref={chatBoxRef}
                     className="fixed bottom-20 right-5 w-80 h-[450px] bg-gray-900 text-white rounded-xl shadow-2xl border border-gray-700 flex flex-col z-50 overflow-hidden font-sans"
@@ -141,6 +147,8 @@ const AIChatWidget = () => {
                         </button>
                     </div>
                 </div>
+            ) : (
+                ""
             )}
         </>
     );
