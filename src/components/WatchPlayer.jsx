@@ -1,11 +1,11 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import YouTube from "react-youtube";
 
 export default function WatchPlayer({ src, onClose }) {
     if (!src) return null;
 
     const handleBackgroundClick = (e) => {
-        // Đảm bảo không đóng khi click vào nội dung iframe
         if (e.target.id === "watch-player-backdrop") {
             onClose();
         }

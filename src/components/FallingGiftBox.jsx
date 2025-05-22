@@ -26,7 +26,7 @@ export default function FallingGiftBox() {
             setShowBox(true);
             setMessage("");
             setClicked(false);
-        }, 1 * 60 * 1000); // 1 phút
+        }, 10 * 60 * 1000); // 1 phút
 
         setShowBox(true);
 

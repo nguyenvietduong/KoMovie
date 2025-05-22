@@ -44,6 +44,14 @@ export default function MovieDetail() {
         { label: movie ? movie.name : "Không tìm thấy", to: "#" },
     ];
 
+    const handleWatchEpisode = (link) => {
+        setSelectedSrc(link);
+
+        const watchedEpisodes = JSON.parse(localStorage.getItem("watchedEpisodes") || "{}");
+        watchedEpisodes[link] = true;
+        localStorage.setItem("watchedEpisodes", JSON.stringify(watchedEpisodes));
+    };
+
     // Server hiện tại
     const currentServer = episodes[selectedServerIndex];
 
@@ -131,16 +139,23 @@ export default function MovieDetail() {
 
                                     {/* Episode buttons */}
                                     <div className="flex flex-wrap gap-2 max-h-[320px] overflow-y-auto pr-2">
-                                        {currentServer?.server_data?.map((ep, idx) => (
-                                            <button
-                                                key={idx}
-                                                onClick={() => setSelectedSrc(ep.link_embed)}
-                                                className="relative overflow-hidden bg-white text-black px-4 py-2 min-w-[100px] rounded text-sm transition-colors duration-300 group"
-                                            >
-                                                <span className="relative z-10 group-hover:text-white">{ep.name}</span>
-                                                <span className="absolute inset-0 bg-red-500 scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100 z-0 rounded" />
-                                            </button>
-                                        ))}
+                                        {currentServer?.server_data?.map((ep, idx) => {
+                                            const watched = JSON.parse(localStorage.getItem("watchedEpisodes") || "{}");
+                                            const isWatched = watched[ep.link_embed];
+
+                                            return (
+                                                <button
+                                                    key={idx}
+                                                    onClick={() => handleWatchEpisode(ep.link_embed)}
+                                                    className={`relative overflow-hidden px-4 py-2 min-w-[100px] rounded text-sm transition-colors duration-300 group
+                                                        ${isWatched ? "bg-green-400 text-white" : "bg-white text-black"}
+                                                      `}
+                                                >
+                                                    <span className="relative z-10 group-hover:text-white">{ep.name}</span>
+                                                    <span className="absolute inset-0 bg-red-500 scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100 z-0 rounded" />
+                                                </button>
+                                            );
+                                        })}
                                     </div>
                                 </>
                             ) : (
