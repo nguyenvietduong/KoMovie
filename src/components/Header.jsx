@@ -168,7 +168,7 @@ export default function Header() {
                                                             <input
                                                                 type="text"
                                                                 placeholder="Nhập tên mới"
-                                                                value={newName}
+                                                                value={newName === "" ? username : newName}
                                                                 onChange={(e) => setNewName(e.target.value)}
                                                                 className="w-full rounded-md border text-black border-gray-300 p-2 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                                                             />
