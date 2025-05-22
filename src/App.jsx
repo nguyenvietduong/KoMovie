@@ -30,14 +30,14 @@ export default function App() {
         let alertedHD = false;
 
         const handleKeyDown = (e) => {
-            if (
-                e.key === "F12" ||
-                (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase()))
-            ) {
-                e.preventDefault();
-                alert("Không được đâu lêu lêu !!");
-                return;
-            }
+            // if (
+            //     e.key === "F12" ||
+            //     (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase()))
+            // ) {
+            //     e.preventDefault();
+            //     alert("Không được đâu lêu lêu !!");
+            //     return;
+            // }
 
             pressedKeys.add(e.key.toLowerCase());
 
