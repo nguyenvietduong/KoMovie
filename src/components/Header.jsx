@@ -122,7 +122,7 @@ export default function Nav() {
                         <SearchBar />
 
                         {/* Right side: Search, Language, User */}
-                        <div className="hidden lg:flex lg:items-center lg:gap-x-6">
+                        {/* <div className="hidden lg:flex lg:items-center lg:gap-x-6">
 
                             {user ? (
                                 <div ref={containerRef} className="relative" onClick={() => setAuthMenuOpen(!authMenuOpen)}>
@@ -179,7 +179,7 @@ export default function Nav() {
                                     Đăng nhập
                                 </Link>
                             )}
-                        </div>
+                        </div> */}
                     </div>
                 </nav>
 
@@ -202,7 +202,7 @@ export default function Nav() {
 
                         <SearchBar />
 
-                        {user ? (
+                        {/* {user ? (
                             <div className="pt-2 border-t border-gray-200">
                                 <p className="py-2 font-medium text-gray-900">
                                     👋 {user.name || user.email}
@@ -228,7 +228,7 @@ export default function Nav() {
                             >
                                 Đăng nhập
                             </Link>
-                        )}
+                        )} */}
                     </div>
                 )}
             </header>
