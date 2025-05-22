@@ -1,9 +1,9 @@
 import { Helmet } from 'react-helmet';
+
 import Breadcrumb from '../components/Breadcrumb';
 import ListMovie from '../components/Movie/ListMovie';
 
 export default function ListMoviePage() {
-
     const breadcrumbItems = [
         { label: "Trang chủ", to: '/' },
         { label: "Danh sách phim", to: '/lessons' },

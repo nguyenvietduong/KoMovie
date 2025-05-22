@@ -1,50 +1,43 @@
+import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
+
 import Breadcrumb from "../components/Breadcrumb";
 import Slider from "../components/Slider";
 import MovieSection from "../components/Movie/MovieSection";
 import MovieTabs from "../components/Movie/MovieTabs";
-import { useEffect, useState } from "react";
-import movieService from '../services/MovieService';
-import { Helmet } from "react-helmet";
+import movieService from "../services/MovieService";
 import movies from "../config/movies";
 
 export default function HomePage() {
     const breadcrumbItems = [{ label: "Trang chủ", path: "/" }];
-
-    const showingMovies = movies.filter(movie => movie.isShowing);
+    const showingMovies = movies.filter((movie) => movie.isShowing);
 
     const [newMovies, setNewMovies] = useState([]);
     const [hotMovies, setHotMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    function randum() {
-        return Math.floor(Math.random() * 10) + 1;
-    }
+    const randum = () => Math.floor(Math.random() * 10) + 1;
 
     useEffect(() => {
-        const newMovies = async () => {
+        const fetchMovies = async () => {
+            setLoading(true);
             try {
-                const newMoviesRes = await movieService.fetchNewMovies(randum());
+                const [newMoviesRes, hotRes] = await Promise.all([
+                    movieService.fetchNewMovies(randum()),
+                    movieService.fetchNewMovies(randum()),
+                ]);
                 setNewMovies(newMoviesRes.items || []);
-            } catch (err) {
-                console.error(err);
-            }
-        };
-
-        newMovies();
-    }, []);
-
-    useEffect(() => {
-        const fetchHotMovies = async () => {
-            try {
-                const hotRes = await movieService.fetchNewMovies(randum());
                 setHotMovies(hotRes.items || []);
             } catch (err) {
                 console.error(err);
+                setError("Đã xảy ra lỗi khi tải phim mới.");
+            } finally {
+                setLoading(false);
             }
         };
 
-        fetchHotMovies();
+        fetchMovies();
     }, []);
 
     return (
@@ -66,10 +59,18 @@ export default function HomePage() {
                 {error && <p className="text-red-600">{error}</p>}
 
                 {!loading && !error && (
-                    <MovieSection title="| Phim Mới Cập Nhật" movies={newMovies} linkTo="/movies?type=phim-moi" />
+                    <MovieSection
+                        title="| Phim Mới Cập Nhật"
+                        movies={newMovies}
+                        linkTo="/movies?type=phim-moi"
+                    />
                 )}
 
-                <MovieSection title="| Top Phim Đang Hot" movies={hotMovies} linkTo="/movies?type=phim-hot" />
+                <MovieSection
+                    title="| Top Phim Đang Hot"
+                    movies={hotMovies}
+                    linkTo="/movies?type=phim-hot"
+                />
 
                 <MovieTabs />
             </div>

@@ -72,26 +72,26 @@ export default function Slider({ movies }) {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="
-    relative overflow-hidden text-white px-8 border border-green-500 py-3 rounded-lg
-    before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-600 before:via-green-400 before:to-green-600
-    before:scale-x-0 before:origin-left before:transition-transform before:duration-400
-    hover:before:scale-x-100
-    hover:text-white
-    before:z-0
-    z-10
-    font-semibold
-    tracking-wide
-    shadow-lg
-    transition
-    duration-300
-  "
+                                                    relative overflow-hidden text-white px-8 border border-green-500 py-3 rounded-lg
+                                                    before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-600 before:via-green-400 before:to-green-600
+                                                    before:scale-x-0 before:origin-left before:transition-transform before:duration-400
+                                                    hover:before:scale-x-100
+                                                    hover:text-white
+                                                    before:z-0
+                                                    z-10
+                                                    font-semibold
+                                                    tracking-wide
+                                                    shadow-lg
+                                                    transition
+                                                    duration-300
+                                                "
                                             >
                                                 <span className="relative z-10">🍿 Mua vé ngay</span>
                                             </a>
 
-                                                <button
-                                                    onClick={() => setTrailerSrc(movie.trailer_url)}
-                                                    className="
+                                            <button
+                                                onClick={() => setTrailerSrc(movie.trailer_url)}
+                                                className="
               relative overflow-hidden text-white px-8 border border-green-500 py-3 rounded-lg
               before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-600 before:via-green-400 before:to-green-600
               before:scale-x-0 before:origin-left before:transition-transform before:duration-400
@@ -105,9 +105,9 @@ export default function Slider({ movies }) {
               transition
               duration-300
             "
-                                                >
-                                                    <span className="relative z-10">📺 Xem Trailer</span>
-                                                </button>
+                                            >
+                                                <span className="relative z-10">📺 Xem Trailer</span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

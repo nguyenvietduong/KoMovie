@@ -19,6 +19,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import YouTubePage from "./pages/YouTubePage";
 import RegisterPage from "./pages/Auth/RegisterPage";
+import FallingGiftBox from "./components/FallingGiftBox";
 // import SharedWatchRoomPage from "./pages/SharedWatchRoomPage";
 
 export default function App() {
@@ -68,6 +69,7 @@ export default function App() {
         <>
             <AIChatWidget />
             <FallingEffect effect="snowflakes" />
+            <FallingGiftBox />
             <ToastContainer />
             <LoadingScreen />
             <Header />
