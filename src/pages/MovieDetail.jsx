@@ -50,6 +50,18 @@ export default function MovieDetail() {
         const watchedEpisodes = JSON.parse(localStorage.getItem("watchedEpisodes") || "{}");
         watchedEpisodes[link] = true;
         localStorage.setItem("watchedEpisodes", JSON.stringify(watchedEpisodes));
+
+        const watchedMovies = JSON.parse(localStorage.getItem("watchedMovies") || "[]");
+
+        const alreadyExists = watchedMovies.some((m) => m.slug === movie.slug);
+        if (!alreadyExists) {
+            watchedMovies.push({
+                slug: movie.slug,
+                name: movie.name,
+                poster_url: movie.poster_url,
+            });
+            localStorage.setItem("watchedMovies", JSON.stringify(watchedMovies));
+        }
     };
 
     // Server hiện tại

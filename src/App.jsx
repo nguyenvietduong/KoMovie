@@ -12,6 +12,7 @@ import ListMoviePage from "./pages/ListMoviePage";
 import NotFoundPage from "./pages/NotFoundPage";
 import FallingEffect from "./components/FallingEffect";
 import AIChatWidget from './components/AIChatWidget';
+import VideoPlayerPopup from './components/VideoPlayerPopup';
 import MovieDetail from "./pages/MovieDetail";
 import LoginPage from "./pages/Auth/LoginPage";
 import MovieFavorites from "./pages/MovieFavorites";
@@ -20,11 +21,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import YouTubePage from "./pages/YouTubePage";
 import RegisterPage from "./pages/Auth/RegisterPage";
 import FallingGiftBox from "./components/FallingGiftBox";
+import UserNamePrompt from "./components/UserNamePrompt";
+import WatchedMoviePage from "./pages/WatchedMoviePage";
 // import SharedWatchRoomPage from "./pages/SharedWatchRoomPage";
 
 export default function App() {
-    const [selectedSrc, setSelectedSrc] = useState(null);
-    const [isMinimized, setIsMinimized] = useState(false);
+    const [selectedSrc, setSelectedSrc] = React.useState(null);
 
     useEffect(() => {
         const pressedKeys = new Set();
@@ -67,80 +69,21 @@ export default function App() {
 
     return (
         <>
+            <UserNamePrompt />
             <AIChatWidget />
             <FallingEffect effect="snowflakes" />
             <FallingGiftBox />
             <ToastContainer />
             <LoadingScreen />
             <Header />
-            {selectedSrc && (
-                <div
-                    className={`fixed z-[9999] ${isMinimized
-                        ? "bottom-4 right-4 w-72 aspect-video rounded-lg shadow-lg overflow-hidden cursor-pointer"
-                        : "inset-0 flex items-center justify-center bg-black bg-opacity-70"
-                        }`}
-                >
-                    {!isMinimized ? (
-                        <div className="relative w-full max-w-5xl aspect-video bg-black rounded-lg shadow-lg border">
-                            <button
-                                onClick={() => {
-                                    setSelectedSrc(null);
-                                    setIsMinimized(false);
-                                }}
-                                className="absolute top-2 right-2 text-white bg-red-600 hover:bg-red-700 rounded-full w-8 h-8 flex items-center justify-center z-10"
-                                title="Đóng"
-                            >
-                                ✕
-                            </button>
-
-                            <button
-                                onClick={() => setIsMinimized(true)}
-                                className="absolute top-2 right-12 text-white bg-gray-600 hover:bg-gray-700 rounded-full w-8 h-8 flex items-center justify-center z-10"
-                                title="Thu nhỏ"
-                            >
-                                &#8211;
-                            </button>
-
-                            <iframe
-                                src={selectedSrc}
-                                title="Xem phim"
-                                allowFullScreen
-                                className="w-full h-full rounded-lg"
-                            ></iframe>
-                        </div>
-                    ) : (
-                        <div
-                            onClick={() => setIsMinimized(false)}
-                            className="relative w-full h-full bg-black rounded-lg overflow-hidden shadow-lg"
-                        >
-                            <iframe
-                                src={selectedSrc}
-                                title="Xem phim"
-                                allowFullScreen
-                                className="w-full h-full"
-                            ></iframe>
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setSelectedSrc(null);
-                                    setIsMinimized(false);
-                                }}
-                                className="absolute top-1 right-1 text-white bg-red-600 hover:bg-red-700 rounded-full w-6 h-6 flex items-center justify-center"
-                                title="Đóng"
-                            >
-                                ✕
-                            </button>
-                        </div>
-                    )}
-                </div>
-            )}
-
+            <VideoPlayerPopup selectedSrc={selectedSrc} setSelectedSrc={setSelectedSrc} />
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/movies" element={<ListMoviePage />} />
                 <Route path="/movies/:movieSlug" element={<MovieDetail />} />
                 {/* <Route path="/watch-room/:watchRoom/:movieSlug" element={<SharedWatchRoomPage />} /> */}
                 <Route path="/movies-favorites" element={<MovieFavorites />} />
+                <Route path="/watched" element={<WatchedMoviePage />} />
                 {/* <Route path="/youtube" element={<YouTubePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} /> */}
