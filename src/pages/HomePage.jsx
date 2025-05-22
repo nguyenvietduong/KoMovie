@@ -5,11 +5,13 @@ import MovieTabs from "../components/Movie/MovieTabs";
 import { useEffect, useState } from "react";
 import movieService from '../services/MovieService';
 import { Helmet } from "react-helmet";
+import movies from "../config/movies";
 
 export default function HomePage() {
     const breadcrumbItems = [{ label: "Trang chủ", path: "/" }];
 
-    const [dataSliderMovies, setDataSliderMovies] = useState([]);
+    const showingMovies = movies.filter(movie => movie.isShowing);
+
     const [newMovies, setNewMovies] = useState([]);
     const [hotMovies, setHotMovies] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -20,28 +22,16 @@ export default function HomePage() {
     }
 
     useEffect(() => {
-        const fetchSliderAndNewMovies = async () => {
-            setLoading(true);
-            setError(null);
+        const newMovies = async () => {
             try {
-                const fetchRandom = () => movieService.fetchNewMovies(randum());
-
-                const [sliderRes, newMoviesRes] = await Promise.all([
-                    fetchRandom(),
-                    fetchRandom()
-                ]);
-
-                setDataSliderMovies(sliderRes.items || []);
+                const newMoviesRes = await movieService.fetchNewMovies(randum());
                 setNewMovies(newMoviesRes.items || []);
             } catch (err) {
                 console.error(err);
-                setError("Không thể tải phim mới");
-            } finally {
-                setLoading(false);
             }
         };
 
-        fetchSliderAndNewMovies();
+        newMovies();
     }, []);
 
     useEffect(() => {
@@ -63,7 +53,7 @@ export default function HomePage() {
                 <title>Xem phim miễn phí chất lượng cao | KoMovie</title>
             </Helmet>
 
-            <Slider movies={dataSliderMovies} />
+            <Slider movies={showingMovies} />
 
             <div className="container mx-auto px-4 py-10 space-y-16">
                 <Breadcrumb items={breadcrumbItems} />

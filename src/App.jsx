@@ -139,9 +139,9 @@ export default function App() {
                 <Route path="/movies/:movieSlug" element={<MovieDetail />} />
                 {/* <Route path="/watch-room/:watchRoom/:movieSlug" element={<SharedWatchRoomPage />} /> */}
                 <Route path="/movies-favorites" element={<MovieFavorites />} />
-                <Route path="/youtube" element={<YouTubePage />} />
+                {/* <Route path="/youtube" element={<YouTubePage />} />
                 <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/register" element={<RegisterPage />} /> */}
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
             <Footer />
