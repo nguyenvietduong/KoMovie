@@ -38,7 +38,7 @@ export default function App() {
                 (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase()))
             ) {
                 e.preventDefault();
-                alert("Không được đâu lêu lêu !!");
+                alert("Error !!");
                 return;
             }
 
