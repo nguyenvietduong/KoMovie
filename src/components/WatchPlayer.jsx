@@ -1,6 +1,5 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import YouTube from "react-youtube";
 
 export default function WatchPlayer({ src, onClose }) {
     if (!src) return null;
