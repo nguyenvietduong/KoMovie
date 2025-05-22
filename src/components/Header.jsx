@@ -6,17 +6,18 @@ import { useFavorites } from "../hooks/useFavorites";
 import { useUserContext } from "../hooks/UserContext";
 
 export default function Header() {
+    const { setUsername } = useUserContext();
     const location = useLocation();
     const { user, logout } = useContext(AuthContext);
     const containerRef = useRef(null);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [authMenuOpen, setAuthMenuOpen] = useState(false);
+    const [showInput, setShowInput] = useState(false);
     const { favorites } = useFavorites();
     const { username } = useUserContext();
+    const [newName, setNewName] = useState("");
 
-    console.log(username);
-    
-    
+
     const isActive = (path) =>
         location.pathname === path || location.pathname.startsWith(path + "/");
 
@@ -31,6 +32,7 @@ export default function Header() {
         const handleClickOutside = (event) => {
             if (containerRef.current && !containerRef.current.contains(event.target)) {
                 setAuthMenuOpen(false);
+                setShowInput(false);
             }
         };
 
@@ -145,10 +147,10 @@ export default function Header() {
                                         >
                                             <div className="absolute top-full -left-44 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
                                                 <div className="p-4">
-                                                    <div className="group relative flex items-center gap-4 rounded-xl p-4 transition hover:bg-gray-100">
+                                                    <Link to={"/watched"} className="group relative flex items-center gap-4 rounded-xl p-4 transition hover:bg-gray-100">
                                                         <div className="flex size-12 flex-none items-center justify-center rounded-xl bg-gray-100 group-hover:bg-white shadow-md">
                                                             <img
-                                                                src="https://scontent.fhan1-1.fna.fbcdn.net/v/t39.30808-1/499431860_1184152933444845_2540510630034471305_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=101&ccb=1-7&_nc_sid=e99d92&_nc_ohc=VliwfFudp4gQ7kNvwE6gqzh&_nc_oc=AdnlTbv2Gw-2EI0ugbJ3OWx3FJZ1_WhH661BSFEvlZSOJyiKYbqqoRJIKQbqTKtXq_w&_nc_zt=24&_nc_ht=scontent.fhan1-1.fna&_nc_gid=b8ThlFZcH2YNpc82BDsiTQ&oh=00_AfJJF3CO85sul3T51yW1zuqB-szTe9i7NmpTxEseP2Bprg&oe=6834B1C2" // (rút gọn ảnh base64 cho ví dụ)
+                                                                src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-1/499431860_1184152933444845_2540510630034471305_n.jpg?stp=dst-jpg_s160x160_tt6&_nc_cat=101&ccb=1-7&_nc_sid=e99d92&_nc_ohc=VliwfFudp4gQ7kNvwHcmnS2&_nc_oc=AdkeuuN7TWIhb0dL-HWzQzk0XYmeV1hzSADah3ikl7UmPNSPuJqb7Z6t70qffKBKoSiGXKjJ7xwwTaTNiUwxm_la&_nc_zt=24&_nc_ht=scontent.fhan15-1.fna&_nc_gid=Ssw0l9-CwfkDetjsISAhjw&oh=00_AfIrSpWONMKg3gAsBZGo4v1Kym6JPqOMB8866HTZeVh1lg&oe=68352242"
                                                                 alt="Thumbnail"
                                                                 className="h-10 w-10 rounded-md object-cover"
                                                             />
@@ -159,10 +161,49 @@ export default function Header() {
                                                             </h4>
                                                             <p className="text-sm text-gray-500">Lịch sử phim đã xem của bạn</p>
                                                         </div>
-                                                    </div>
+                                                    </Link>
+                                                    {/* Hiển thị ô nhập nếu showInput true */}
+                                                    {showInput && (
+                                                        <div className="mt-3">
+                                                            <input
+                                                                type="text"
+                                                                placeholder="Nhập tên mới"
+                                                                value={newName}
+                                                                onChange={(e) => setNewName(e.target.value)}
+                                                                className="w-full rounded-md border text-black border-gray-300 p-2 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+                                                            />
+                                                        </div>
+                                                    )}
                                                 </div>
-                                                <div className="grid grid-cols-1 divide-x divide-gray-900/5 bg-gray-50">
-                                                    <button onClick={() => setAuthMenuOpen(false)} className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100">
+
+                                                <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+                                                    <button
+                                                        onClick={() => {
+                                                            if (showInput) {
+                                                                if (newName.trim() === "") {
+                                                                    alert("Vui lòng nhập tên trước khi tiếp tục!");
+                                                                    return;
+                                                                }
+                                                                localStorage.setItem("username", newName.trim());
+                                                                setNewName("");
+                                                                setShowInput(false);
+                                                                setAuthMenuOpen(false);
+                                                                setUsername(newName.trim());
+                                                            } else {
+                                                                setShowInput(true);
+                                                            }
+                                                        }}
+                                                        className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100"
+                                                    >
+                                                        {showInput ? "Lưu tên" : "Cập nhật tên"}
+                                                    </button>
+                                                    <button
+                                                        onClick={() => {
+                                                            setShowInput(false);
+                                                            setAuthMenuOpen(false);
+                                                        }}
+                                                        className="flex items-center justify-center gap-x-2.5 p-3 text-sm/6 font-semibold text-gray-900 hover:bg-gray-100"
+                                                    >
                                                         Đóng
                                                     </button>
                                                 </div>

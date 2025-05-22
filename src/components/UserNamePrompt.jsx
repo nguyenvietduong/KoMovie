@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useUserContext } from "../hooks/UserContext";
 
 export default function UserNamePrompt() {
-    const { setUsername } = useUserContext();  // <-- lấy setUsername từ context
+    const { setUsername } = useUserContext();
     const [showModal, setShowModal] = useState(false);
     const [name, setName] = useState("");
 
