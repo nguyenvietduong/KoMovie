@@ -1,5 +1,19 @@
 const movies = [
     {
+        name: "PHIM ĐIỆN ẢNH DORAEMON: NOBITA VÀ CUỘC PHIÊU LƯU VÀO THẾ GIỚI TRONG TRANH",
+        origin_name: "Thông qua món bảo bối mới của Doraemon, cả nhóm bạn bước thế giới trong một bức tranh nổi tiếng và bắt gặp cô bạn bí ẩn tên Claire. Với lời mời của Claire, cả nhóm cùng đến thăm vương quốc Artoria, nơi ẩn giấu một viên ngọc quý mang tên Artoria Blue đang ngủ yên. Trên hành trình tìm kiếm viên ngọc, nhóm bạn Doraemon phát hiện một truyền thuyết về sự hủy diệt của thế giới, mà truyền thuyết đó dường như đang sống dậy! Liệu cả nhóm có thể phá hủy lời nguyền này và bảo vệ cả thế giới?",
+        poster_url: "https://media.lottecinemavn.com/Media/MovieFile/MovieImg/202505/11730_105_100005.jpg",
+        trailer_url: "https://media.lottecinemavn.com/Media/MovieFile/MovieMedia/202503/11730_301_100001.mp4",
+        isShowing: true,
+    },
+    {
+        name: "LILO VÀ STITCH",
+        origin_name: "Bộ phim live-action Lilo và Stitch đưa câu chuyện kinh điển của Disney năm 2002 trở lại với một diện mạo mới, vừa hài hước vừa đầy cảm xúc. Phim theo chân Lilo, một cô bé người Hawaii cô đơn, và Stitch, sinh vật ngoài hành tinh tinh nghịch đang chạy trốn, khi cả hai vô tình tìm thấy nhau và cùng nhau hàn gắn những tan vỡ trong gia đình của Lilo.",
+        poster_url: "https://media.lottecinemavn.com/Media/MovieFile/MovieImg/202505/11786_105_100001.jpg",
+        trailer_url: "https://media.lottecinemavn.com/Media/MovieFile/MovieMedia/202505/11786_301_100001.mp4",
+        isShowing: true,
+    },
+    {
         name: "THÁM TỬ KIÊN: KỲ ÁN KHÔNG ĐẦU",
         origin_name: "Thám Tử Kiên là một nhân vật được yêu thích trong tác phẩm điện của ăn khách của NGƯỜI VỢ CUỐI CÙNG của Victor Vũ, Thám Tử Kiên: Kỳ Không Đầu sẽ là một phim Victor Vũ trở về với thể loại sở trường Kinh Dị - Trinh Thám sau những tác phẩm tình cảm lãng mạn trước đó.",
         poster_url: "https://media.lottecinemavn.com/Media/MovieFile/MovieImg/202504/11548_105_100003.jpg",
@@ -25,7 +39,7 @@ const movies = [
         origin_name: `Câu chuyện của bộ phim bắt đầu với Shinnosuke và những người bạn của Shin thuộc Đội đặc nhiệm Kasukabe trải qua một tuần ở lại "Học viện Tư nhân Tenkasu Kasukabe" (Còn gọi là "Học viện Tenkasu"), một trường nội trú ưu tú được quản lý bởi một AI hiện đại, "Otsmun". Tất cả các học sinh ban đầu được trao một huy hiệu với 1000 điểm và điểm của các em sẽ được Otsmun tăng hoặc giảm dựa trên hành vi và kết quả học tập của các em. Trong đó ai đó tấn công Kazama. Kết quả là trí thông minh của anh ta bị suy giảm và những vết cắn kỳ lạ để lại trên mông anh ta. Đội đặc nhiệm Kasukabe hợp lực với chủ tịch hội học sinh bỏ học của trường, Chishio Atsuki, một cựu vận động viên, để thành lập một nhóm thám tử và giải quyết bí ẩn`,
         poster_url: "https://media.lottecinemavn.com/Media/MovieFile/MovieImg/202504/11774_105_100001.jpg",
         trailer_url: "https://media.lottecinemavn.com/Media/MovieFile/MovieMedia/202504/11774_301_100001.mp4",
-        isShowing: true,
+        isShowing: false,
     },
     {
         name: "YADANG: BA MẶT LẬT KÈO",
@@ -46,6 +60,13 @@ const movies = [
         origin_name: `Những câu chuyện CHƯA TỪNG ĐƯỢC LÊN SÓNG, những CHÔNG GAI ngoài đời thực, những khó khăn ĐẨY CHÚNG TÔI đi tới giới hạn và những niềm vui CHƯA BAO GIỜ có thể diễn tả được bằng lời ... Vũ trụ đã sắp đặt, phải là 33 con người này, số phận đã định đoạt, phải là 33 Anh Tài này để tạo nên mùa Anh Trai Vượt Ngàn Chông Gai đầu tiên! Bạn đã sẵn sàng "tận hưởng cơn mưa" cùng chúng tôi?`,
         poster_url: "https://media.lottecinemavn.com/Media/MovieFile/MovieImg/202505/11782_105_100001.jpg",
         trailer_url: "https://media.lottecinemavn.com/Media/MovieFile/MovieMedia/202505/11782_301_100003.mp4",
+        isShowing: true,
+    },
+    {
+        name: "TỘI ĐỒ",
+        origin_name: `Mắc kẹt trong cuộc sống thực tại rối ren, cả hai quay trở lại quê nhà để có một khởi đầu mới, để rồi phát hiện một thế lực ác quỷ đang nhăm nhe chờ đợi họ.`,
+        poster_url: "https://media.lottecinemavn.com/Media/MovieFile/MovieImg/202505/11781_105_100001.jpg",
+        trailer_url: "",
         isShowing: true,
     },
 ];

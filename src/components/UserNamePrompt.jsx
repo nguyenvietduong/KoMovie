@@ -33,7 +33,12 @@ export default function UserNamePrompt() {
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm">
             <div
                 className="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md animate-fade-in"
-                style={{ backgroundImage: 'url("https://img.freepik.com/free-photo/dark-stained-rusty-grunge-building-spooky-abandoned-ruined-generative-ai_188544-12726.jpg")' }}
+                style={{
+                    backgroundImage: 'url("https://img.freepik.com/free-photo/movie-background-collage_23-2149876003.jpg")',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                }}
             >
                 <h2 className="text-2xl font-bold mb-3 text-white">👋 Chào bạn!</h2>
                 <p className="mb-5 text-white">Vui lòng nhập tên của bạn để bắt đầu:</p>

@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import TrailerPlayer from "./TrailerPlayer";
 import { useState } from "react";
+import DOMPurify from 'dompurify';
 
 export default function Slider({ movies }) {
     const [trailerSrc, setTrailerSrc] = useState(null);
@@ -63,9 +64,9 @@ export default function Slider({ movies }) {
                                         </h3>
 
                                         <p className="hidden md:block text-lg md:text-xl text-gray-200 opacity-90 mb-6 leading-relaxed max-w-3xl">
-                                            {movie.origin_name || "Mô tả phim chưa có."}
+                                            <span dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(movie.origin_name || "Mô tả phim chưa có.") }} />
                                         </p>
-
+                                        
                                         <div className="flex flex-row md:flex-row gap-5 justify-center md:justify-start">
                                             <a
                                                 href="https://www.lottecinemavn.com/LCHS/Contents/Movie/Movie-List.aspx"
