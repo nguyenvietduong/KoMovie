@@ -4,17 +4,17 @@ import { useFavorites } from "../../hooks/useFavorites";
 import { Link } from "react-router-dom";
 
 const tabs = [
+        { label: "Hoạt Hình", value: "hoat-hinh" },
     { label: "Phim Bộ", value: "phim-bo" },
     { label: "Phim Lẻ", value: "phim-le" },
     { label: "TV Shows", value: "tv-shows" },
-    { label: "Hoạt Hình", value: "hoat-hinh" },
     { label: "Vietsub", value: "phim-vietsub" },
     { label: "Thuyết Minh", value: "phim-thuyet-minh" },
     { label: "Lồng Tiếng", value: "phim-long-tieng" },
 ];
 
 export default function MovieTabs() {
-    const [activeTab, setActiveTab] = useState("phim-bo");
+    const [activeTab, setActiveTab] = useState("hoat-hinh");
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const { favorites, toggleFavorite } = useFavorites();

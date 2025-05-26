@@ -4,6 +4,7 @@ import App from './App.jsx';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './pages/Auth/AuthContext';
 import { FavoritesProvider } from "./hooks/useFavorites";
+import { SearchHistoryProvider } from "./hooks/useSearchHistory";
 import { UserProvider } from "./hooks/UserContext";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -12,7 +13,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <UserProvider>
           <FavoritesProvider>
-            <App />
+            <SearchHistoryProvider>
+              <App />
+            </SearchHistoryProvider>
           </FavoritesProvider>
         </UserProvider>
       </AuthProvider>
