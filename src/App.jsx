@@ -33,14 +33,14 @@ export default function App() {
         let alertedHD = false;
 
         const handleKeyDown = (e) => {
-            // if (
-            //     e.key === "F12" ||
-            //     (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase()))
-            // ) {
-            //     e.preventDefault();
-            //     alert("Error !!");
-            //     return;
-            // }
+            if (
+                e.key === "F12" ||
+                (e.ctrlKey && e.shiftKey && ["I", "J", "C"].includes(e.key.toUpperCase()))
+            ) {
+                e.preventDefault();
+                alert("Error !!");
+                return;
+            }
 
             pressedKeys.add(e.key.toLowerCase());
 
